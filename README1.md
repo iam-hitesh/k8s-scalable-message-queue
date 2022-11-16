@@ -71,10 +71,13 @@
   export MASTER_SIZE=t2.medium
   export NODE_SIZE=t2.small
   
-  kops create cluster --cloud=aws --zones=ap-south-1 --name=dev.k8s.codesail.link --dns-zone=codesail.link --dns public/private
+  kops create cluster --cloud=aws --node-count 3 --node-size t2.small --master-size t2.medium --zones ap-south-1a --dns-zone codesail.link --topology public --networking calico --name=dev.k8s.codesail.link
   
-  kops update cluster dev.k8s.codesail.link --yes
+  kops update cluster --name dev.k8s.codesail.link --yes --admin
   ```
   
   https://kops.sigs.k8s.io/cli/kops_create_cluster/
  
+
+
+https://www.opcito.com/blogs/creating-kubernetes-clusters-on-aws-using-kops
